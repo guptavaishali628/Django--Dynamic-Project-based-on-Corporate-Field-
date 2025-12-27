@@ -1,0 +1,7 @@
+{{Newusermsg}}
+<form action="{% url 'signin' %}" method="post">
+{% csrf_token %}
+    Email: <input type="email" name="email" placeholder="enter your email">
+    Password: <input type="password" name="password" placeholder="enter your password">
+    <button type="submit">signin</button>
+</form>

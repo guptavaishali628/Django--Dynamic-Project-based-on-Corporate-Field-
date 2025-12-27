@@ -1,0 +1,70 @@
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import User
+# for authentication we have to import authentication used in login page
+from django.contrib.auth import authenticate
+
+# Create your views here.
+
+def index(req):
+    return render(req, 'index.html')
+
+def register(req):
+    return render(req, 'register.html')
+
+def login(req):
+    return render(req, 'login.html')
+
+def logout(req):
+    return render(req, 'login.html')
+
+def user(req):
+    return render(req,'user.html')
+
+def aadmin(req):
+    return render(req,'admin.html')
+
+def employee(req):
+    return render(req,'employee.html')
+
+def signup(req):
+    # storing data into database
+    if req.method=='POST':
+        name=req.POST.get('name')
+        email=req.POST.get('email')
+        password=req.POST.get('password')
+        confirmpassword=req.POST.get('confirmpassword')
+
+        # if email already exist
+        if User.objects.filter(Email=email).exists():
+            return render(req,'register.html', {'Emailmsg':'email already exist'})
+        
+        # check pass == cpass
+        if password==confirmpassword:
+            User.objects.create(Name=name, Email=email, Password=password, ConfirmPassword=confirmpassword).save()
+            return redirect('index')
+        
+        else:
+            return render(req,'register.html',{'Passmsg':'password do not match'})    
+
+def signin(req):
+    #1-->for NewUser check
+    if req.method=='POST':
+        email=req.POST.get('email')
+        password=req.POST.get('password')
+        # using filter function
+        Newuser=User.objects.filter(Email=email, Password=password).first()
+        if Newuser is not None:
+            return redirect('user')
+        
+        else:
+            return render(req,'login.html',{'Newusermsg':'Invalid email or password'})
+
+    #2--> for admin (use 'and' instead of &) check
+    if email=='admin@gmail.com' and password=='admin@123':
+        return redirect('aadmin')
+
+    # for employee
+    else:
+        pass     
+
