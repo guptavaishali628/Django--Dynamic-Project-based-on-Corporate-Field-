@@ -11,3 +11,9 @@ class User(models.Model):
     ConfirmPassword=models.CharField(max_length=128)    
 
 #---------------------table for employee----------------------------
+
+class Employee(models.Model):
+    Emp_name=models.CharField(max_length=40)
+    Emp_email=models.EmailField()
+    Emp_username=models.CharField(max_length=100)
+    Emp_password=models.CharField(max_length=128)

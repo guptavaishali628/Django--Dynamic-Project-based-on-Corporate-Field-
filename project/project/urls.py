@@ -32,6 +32,8 @@ urlpatterns = [
     path('user/',user, name='user'),
     path('aadmin/',aadmin, name='aadmin'),
     path('employee/',employee, name='employee'),
+    path('register_emp/',register_emp,name='register_emp'),
+    path('add_emp/',add_emp,name='add_emp'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
