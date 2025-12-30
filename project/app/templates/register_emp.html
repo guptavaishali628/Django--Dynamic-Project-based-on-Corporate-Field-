@@ -1,3 +1,5 @@
+
+{% block content %}
 <form action="{% url 'add_emp' %}" method="post">
     {% csrf_token %}
     Employee Name: <input type="text" name="emp_name" placeholder="enter employee name"><br><br>
@@ -11,3 +13,4 @@
     Employee Password : <input type="password" name="emp_password" placeholder="enter employee password"><br><br>
     <button type="submit" name="add_emp" value="">Add Employee</button>
 </form>
+{% endblock content %}

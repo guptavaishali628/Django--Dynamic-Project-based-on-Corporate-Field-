@@ -1,13 +1,36 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>Registeration</title>
+{% endblock title %}
+
+{% load static%}
+
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock css %}
+
+{% block content %}
 <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
+    
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="enter your name">
+   
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="enter your email">
+    {% if Emailmsg %}<p>{{Emailmsg}}</p>{% endif %}
 
-    Name: <input type="text" name="name" placeholder="enter your name"><br>
-    Email: <input type="email" name="email" placeholder="enter your email"><br>
-    {{Emailmsg}}<br>
-    Password: <input type="password" name="password" placeholder="enter string password"><br>
-    ConfirmPassword: <input type="password" name="confirmpassword" placeholder="confirm-password"><br>
-    {{Passmsg}}
-    <br>
+    
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="enter strong password">
+    
+    <label for="confirm-password">Confirm Password</label>
+    <input type="password" name="confirmpassword" placeholder="confirm-password">
+    {% if Passmsg %}<p>{{Passmsg}}</p>{% endif %}
+
+
     <button type=" submit" name="signup">sign-up</button>
 
 </form>
+{% endblock content %}

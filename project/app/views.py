@@ -6,16 +6,13 @@ from django.contrib.auth import authenticate
 
 # Create your views here.
 
-def index(req):
-    return render(req, 'index.html')
+def home(req):
+    return render(req, 'home.html')
 
 def register(req):
     return render(req, 'register.html')
 
 def login(req):
-    return render(req, 'login.html')
-
-def logout(req):
     return render(req, 'login.html')
 
 def user(req):
@@ -99,4 +96,10 @@ def add_emp(req):
                 Emp_username=emp_username,
                 Emp_password=emp_password).save()
             return render('aadmin')
+        
+
+
+#  logout code    
+def logout(req):
+    return render(req,'home.html')    
         

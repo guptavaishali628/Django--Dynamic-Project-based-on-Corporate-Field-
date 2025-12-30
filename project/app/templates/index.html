@@ -5,16 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
     <title>Corporate Dynamic Website</title>
-    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+     {% endblock title %}
+   
+     <link rel="stylesheet" href="{% static 'css/index.css'%}">
+
+     {% block css %}
+     {% endblock css %}
 </head>
 <body>
     <nav>
+        <span>Corporate System Management</span>
         <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'register' %}">Register</a></li>
             <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'login' %}">Logout</a></li>
+            <li><a href="{% url 'home' %}">Logout</a></li>
         </ul>
     </nav>
+    {% block content %}
+    {% endblock content %}
+    <footer>
+        This is footer
+    </footer>
 </body>
 </html>
