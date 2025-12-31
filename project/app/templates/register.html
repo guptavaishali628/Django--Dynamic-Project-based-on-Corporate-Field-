@@ -21,7 +21,6 @@
     <input type="email" name="email" placeholder="enter your email">
     {% if Emailmsg %}<p>{{Emailmsg}}</p>{% endif %}
 
-    
     <label for="password">Password</label>
     <input type="password" name="password" placeholder="enter strong password">
     
@@ -31,6 +30,8 @@
 
 
     <button type=" submit" name="signup">sign-up</button>
+    <p class="register-p">if you have already register?<a href="{% url 'login' %}" style="margin-left: 6px;">login</a></p>
+
 
 </form>
 {% endblock content %}

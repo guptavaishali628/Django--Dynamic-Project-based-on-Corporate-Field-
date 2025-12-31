@@ -6,7 +6,7 @@ form {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1rem;
   width: 100%;
   max-width: 400px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -45,13 +45,17 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
 }
 
-/* Error Messages - Works with your <p> tags */
-form p {
+/* Error Messages - ONLY error messages (not .register-p) */
+form p:not(.register-p) {
   color: #f87171 !important;
-  font-size: 0.85rem;
-  margin: -0.8rem 0 1.2rem 0;
+  font-size: 0.82rem;
+  margin: 1rem 0;
   font-weight: 500;
   letter-spacing: 0.02em;
+  text-align: center;
+  background: rgba(248, 113, 113, 0.15);
+  padding: 10px;
+  border-radius: 6px;
 }
 
 /* Submit Button */
@@ -91,4 +95,30 @@ button:active {
     padding: 0.85rem 1rem;
     font-size: 0.9rem;
   }
+  .register-p {
+    font-size: 0.82rem;
+    margin: 0.8rem 0 0.4rem 0;
+  }
 }
+
+form .register-p {
+  color: #d1d5db;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+form .register-p a {
+  color: #38bdf8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+form .register-p a:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+

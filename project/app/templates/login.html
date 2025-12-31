@@ -12,7 +12,7 @@
 
 {% block content %}
 
-<form action="{% url 'signin' %}" method="post" class="login-form">
+<form action="{% url 'signin' %}" method="post">
 {% csrf_token %}
     {% if Newusermsg %}<p>{{Newusermsg}}</p>{% endif %}
     <label for="email">Email</label>
@@ -21,7 +21,8 @@
     <label for="password">Password</label>
     <input type="password" name="password" placeholder="enter your password">
     <button type="submit">signin</button>
-    <a>forget password?</a>
+    <p class="login-p">if you have not register?<br><a href="{% url 'register' %}">register</a></p>
+    <a href="{% url 'forget_pass' %}">forget password?</a>
 </form>
 
 {% endblock content %}
