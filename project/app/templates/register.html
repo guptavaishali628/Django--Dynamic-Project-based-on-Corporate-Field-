@@ -16,13 +16,17 @@
     
     <label for="name">Name</label>
     <input type="text" name="name" placeholder="enter your name">
+    {% if name_error %}<p>{{name_error}}</p>{% endif %}
+
    
     <label for="email">Email</label>
     <input type="email" name="email" placeholder="enter your email">
+    {% if email_error %}<p>{{email_error}}</p>{% endif %}
     {% if Emailmsg %}<p>{{Emailmsg}}</p>{% endif %}
 
     <label for="password">Password</label>
     <input type="password" name="password" placeholder="enter strong password">
+    {% if Passmsg %}<p>{{Passmsg}}</p>{% endif %}
     
     <label for="confirm-password">Confirm Password</label>
     <input type="password" name="confirmpassword" placeholder="confirm-password">

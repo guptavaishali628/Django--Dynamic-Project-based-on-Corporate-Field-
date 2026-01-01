@@ -34,6 +34,16 @@ def signup(req):
         email=req.POST.get('email')
         password=req.POST.get('password')
         confirmpassword=req.POST.get('confirmpassword')
+        
+        # check fields are empty or not
+        if not name:
+            return render(req, 'register.html', {'name_error': 'Name is required'})
+        if not email:
+            return render(req, 'register.html', {'email_error': 'Email is required'})
+        if not password:
+            return render(req, 'register.html', {'Passmsg': 'Password is required'})
+        if not confirmpassword:
+            return render(req, 'register.html', {'Passmsg': 'Confirm password is required'})
 
         # if email already exist
         if User.objects.filter(Email=email).exists():
@@ -81,7 +91,7 @@ def reset_pass(req):
             return render(req,'forget_pass.html', {'resetEmailmsg':'Please enter email'})
         
         if not User.objects.filter(Email=email).exists():  
-            return render(req,'forget_pass.html', {'resetEmailmsg':'User not registered! Please register first.'})
+            return render(req,'forget_pass.html', {'resetEmailmsg':'This email is not registered!'})
 
         otp=random.randint(1111,9999)   # generate otp by using random module
         req.session['email'], req.session['otp']= email, otp   #using session to check otp is valid or not:
